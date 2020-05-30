@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iamkosgei.androidroom.model.Thought;
@@ -13,9 +15,24 @@ import com.iamkosgei.androidroom.model.Thought;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThoughtAdapter extends RecyclerView.Adapter<ThoughtAdapter.ThoughtHolder> {
-    private List<Thought> thoughtList = new ArrayList<>();
+public class ThoughtAdapter extends ListAdapter<Thought,ThoughtAdapter.ThoughtHolder> {
     private OnItemClickListener listener;
+
+    public ThoughtAdapter() {
+        super(DIFF_CALLBACK);
+    }
+    private static  final  DiffUtil.ItemCallback<Thought> DIFF_CALLBACK = new DiffUtil.ItemCallback<Thought>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Thought oldItem, @NonNull Thought newItem) {
+            return oldItem.getId() == newItem.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Thought oldItem, @NonNull Thought newItem) {
+            return oldItem.getTitle().equals(newItem.getTitle()) &&
+                    oldItem.getDescription().equals(newItem.getDescription());
+        }
+    };
 
     @NonNull
     @Override
@@ -27,21 +44,11 @@ public class ThoughtAdapter extends RecyclerView.Adapter<ThoughtAdapter.ThoughtH
 
     @Override
     public void onBindViewHolder(@NonNull ThoughtHolder holder, int position) {
-        holder.bindThought(thoughtList.get(position));
-    }
-
-    @Override
-    public int getItemCount() {
-        return thoughtList.size();
-    }
-
-    public void setThoughts(List<Thought> thoughts) {
-        this.thoughtList = thoughts;
-        notifyDataSetChanged();
+        holder.bindThought(getItem(position));
     }
 
     public Thought getThough(int position) {
-        return thoughtList.get(position);
+        return getItem(position);
     }
 
     class ThoughtHolder extends RecyclerView.ViewHolder {
@@ -59,7 +66,7 @@ public class ThoughtAdapter extends RecyclerView.Adapter<ThoughtAdapter.ThoughtH
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     if (listener != null && position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(thoughtList.get(position));
+                        listener.onItemClick(getItem(position));
 
                     }
                 }

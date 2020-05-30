@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity  implements AddThoughDialog.
         thoughViewModel.getAllThoughts().observe(this, new Observer<List<Thought>>() {
             @Override
             public void onChanged(List<Thought> thoughts) {
-                thoughtAdapter.setThoughts(thoughts);
+                thoughtAdapter.submitList(thoughts);
             }
         });
 
