@@ -34,4 +34,8 @@ public class ThoughViewModel extends AndroidViewModel {
         thoughRepository.delete(thought);
     }
 
+    public void edit(Thought thought){
+        thoughRepository.update(thought);
+    }
+
 }

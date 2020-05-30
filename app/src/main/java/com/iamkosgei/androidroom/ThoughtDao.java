@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.iamkosgei.androidroom.model.Thought;
 
@@ -23,4 +24,7 @@ public interface ThoughtDao {
 
     @Query("SELECT * FROM THOUGHT_TABLE")
     LiveData<List<Thought>> getAllThoughts();
+
+    @Update
+    void edit(Thought thought);
 }

@@ -63,12 +63,31 @@ public class MainActivity extends AppCompatActivity  implements AddThoughDialog.
             }
         }).attachToRecyclerView(recyclerView);
 
+        thoughtAdapter.setOnItemClickListener(thought -> {
+            AddThoughDialog editThoughDialog = new AddThoughDialog();
+
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", thought.getId());
+            bundle.putString("title", thought.getTitle());
+            bundle.putString("desc", thought.getDescription());
+            editThoughDialog.setArguments(bundle);
+            editThoughDialog.show(getSupportFragmentManager(), "edit_thought");
+
+        });
+
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog, String title, String description) {
+    public void onDialogPositiveClick(DialogFragment dialog, boolean isEdit, int id, String title, String description) {
         Thought thought = new Thought(title, description);
-        thoughViewModel.insert(thought);
+        if (isEdit){
+            thought.setId(id);
+            thoughViewModel.edit(thought);
+        }
+        else {
+            thoughViewModel.insert(thought);
+        }
+
     }
 
     @Override
@@ -79,7 +98,7 @@ public class MainActivity extends AppCompatActivity  implements AddThoughDialog.
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.floatingActionButton){
-            addThoughDialog.show(getSupportFragmentManager(), "add thought");
+            addThoughDialog.show(getSupportFragmentManager(), "add_thought");
         }
         else if (v.getId() == R.id.floatingActionButtonDeleteAll){
             thoughViewModel.deleteAllThoughts();

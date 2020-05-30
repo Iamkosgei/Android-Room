@@ -39,4 +39,10 @@ public class ThoughRepository {
             thoughtDao.delete(thought);
         });
     }
+
+    public void update(Thought thought){
+        ThoughtDatabase.databaseWriteExecutor.execute(()-> {
+            thoughtDao.edit(thought);
+        });
+    }
 }
