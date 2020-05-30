@@ -1,9 +1,11 @@
-package com.iamkosgei.androidroom;
+package com.iamkosgei.androidroom.repository;
 
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import com.iamkosgei.androidroom.db.ThoughtDao;
+import com.iamkosgei.androidroom.db.ThoughtDatabase;
 import com.iamkosgei.androidroom.model.Thought;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.iamkosgei.androidroom;
+package com.iamkosgei.androidroom.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.iamkosgei.androidroom.R;
 import com.iamkosgei.androidroom.model.Thought;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ThoughtAdapter extends ListAdapter<Thought,ThoughtAdapter.ThoughtHolder> {
     private OnItemClickListener listener;

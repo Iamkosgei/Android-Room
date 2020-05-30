@@ -1,4 +1,4 @@
-package com.iamkosgei.androidroom;
+package com.iamkosgei.androidroom.db;
 
 import android.content.Context;
 
@@ -16,11 +16,11 @@ public abstract class ThoughtDatabase extends RoomDatabase {
 
     private static final int NUMBER_OF_THREADS = 4;
 
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
 
-    private static ThoughtDatabase instance;
+    public static ThoughtDatabase instance;
 
     public abstract ThoughtDao thoughtDao();
 

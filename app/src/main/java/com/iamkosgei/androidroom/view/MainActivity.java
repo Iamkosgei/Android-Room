@@ -1,4 +1,4 @@
-package com.iamkosgei.androidroom;
+package com.iamkosgei.androidroom.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.iamkosgei.androidroom.R;
+import com.iamkosgei.androidroom.viewModel.ThoughViewModel;
 import com.iamkosgei.androidroom.model.Thought;
 
 import java.util.List;

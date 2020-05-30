@@ -1,13 +1,10 @@
-package com.iamkosgei.androidroom;
+package com.iamkosgei.androidroom.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -15,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
+
+import com.iamkosgei.androidroom.R;
 
 public class AddThoughDialog extends DialogFragment {
     private EditText title, description;

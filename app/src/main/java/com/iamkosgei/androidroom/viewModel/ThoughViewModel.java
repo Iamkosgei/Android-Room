@@ -1,12 +1,12 @@
-package com.iamkosgei.androidroom;
+package com.iamkosgei.androidroom.viewModel;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.iamkosgei.androidroom.model.Thought;
+import com.iamkosgei.androidroom.repository.ThoughRepository;
 
 import java.util.List;
 

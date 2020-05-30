@@ -1,4 +1,4 @@
-package com.iamkosgei.androidroom;
+package com.iamkosgei.androidroom.db;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
